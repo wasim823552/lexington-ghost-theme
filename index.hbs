@@ -1,64 +1,502 @@
 {{!< default}}
-<section class="hero">
-    <div class="hero-inner container">
-        <h1 class="hero-title">{{@site.title}}</h1>
-        {{#if @site.description}}
-        <p class="hero-description">{{@site.description}}</p>
-        {{/if}}
-        <div class="hero-search">
-            <form class="hero-search-form" data-search-form>
-                <svg class="hero-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                <input type="search" class="hero-search-input" placeholder="Search permits, rules, city guides..." aria-label="Search articles" data-search-input>
+
+{{!-- ═══════════════════════════════════════════════════════════════
+   HOMEPAGE - HomePermitPro | Lexington v2.0
+   Niche: Homeowner Permits & Local Rules | YMYL + E-E-A-T
+   ═══════════════════════════════════════════════════════════════ --}}
+
+{{!-- ── HERO SECTION ───────────────────────────────────────────────── --}}
+<section class="hp-hero">
+    <div class="hp-hero-bg" aria-hidden="true"></div>
+    <div class="hp-hero-inner container">
+        <div class="hp-hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            Trusted by 50,000+ Homeowners
+        </div>
+        <h1 class="hp-hero-title">Your Complete Guide to<br>Home Building Permits &amp; Local Rules</h1>
+        <p class="hp-hero-subtitle">Most homeowners have no idea which permits they need until a city inspector shows up. We break down every permit requirement, zoning rule, and building code into plain language so you can plan your project with confidence and avoid costly mistakes.</p>
+        <div class="hp-hero-search">
+            <form class="hp-hero-search-form" data-search-form>
+                <svg class="hp-hero-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="search" class="hp-hero-search-input" placeholder="Search your city, permit type, or rule..." aria-label="Search articles" data-search-input>
+                <button type="submit" class="hp-hero-search-btn">Search</button>
             </form>
         </div>
+        <div class="hp-hero-tags">
+            <a href="/tag/building-permits/" class="hp-hero-tag">Building Permits</a>
+            <a href="/tag/zoning-laws/" class="hp-hero-tag">Zoning Laws</a>
+            <a href="/tag/electrical-permits/" class="hp-hero-tag">Electrical Permits</a>
+            <a href="/tag/plumbing-permits/" class="hp-hero-tag">Plumbing Permits</a>
+        </div>
     </div>
 </section>
 
-{{#if @custom.show_trust_badge}}
-<section class="trust-bar">
+{{!-- ── TRUST STATS BAR ────────────────────────────────────────────── --}}
+<section class="hp-stats">
     <div class="container">
-        <div class="trust-bar-inner">
-            <div class="trust-item">
-                <svg class="trust-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                <span>Research-Based</span>
+        <div class="hp-stats-grid">
+            <div class="hp-stat">
+                <div class="hp-stat-number">1,200+</div>
+                <div class="hp-stat-label">In-Depth Guides</div>
             </div>
-            <div class="trust-item">
-                <svg class="trust-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                <span>Verified Sources</span>
+            <div class="hp-stat">
+                <div class="hp-stat-number">500+</div>
+                <div class="hp-stat-label">Cities Covered</div>
             </div>
-            <div class="trust-item">
-                <svg class="trust-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <span>Updated Regularly</span>
+            <div class="hp-stat">
+                <div class="hp-stat-number">Weekly</div>
+                <div class="hp-stat-label">Content Updates</div>
             </div>
-            <div class="trust-item">
-                <svg class="trust-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                <span>Expert Reviewed</span>
+            <div class="hp-stat">
+                <div class="hp-stat-number">100%</div>
+                <div class="hp-stat-label">Free to Use</div>
             </div>
         </div>
     </div>
 </section>
-{{/if}}
 
-{{#get "posts" filter="featured:true" limit="1" as |featured|}}
-{{#if featured}}
-<section class="featured-section">
+{{!-- ── PERMIT CATEGORIES ──────────────────────────────────────────── --}}
+<section class="hp-section hp-categories">
     <div class="container">
-        {{#foreach featured}}
-        {{> post-card-featured}}
-        {{/foreach}}
+        <div class="hp-section-header">
+            <h2 class="hp-section-title">What Permits Do You Need?</h2>
+            <p class="hp-section-desc">Every construction project, no matter how small, falls under some type of permit requirement. The tricky part is that rules change from one city to the next, and sometimes even between neighborhoods within the same city. Here is a breakdown of the most common permit categories homeowners run into.</p>
+        </div>
+        <div class="hp-categories-grid">
+            <a href="/tag/building-permits/" class="hp-cat-card">
+                <div class="hp-cat-icon hp-cat-icon--blue">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><polyline points="1 10 12 15 23 10"></polyline></svg>
+                </div>
+                <h3 class="hp-cat-title">Building Permits</h3>
+                <p class="hp-cat-desc">Building permits are the most common type homeowners deal with. You need one for almost anything that changes the structure of your home. Adding a room, knocking down a wall, or even converting a garage into a living space all require a building permit in most jurisdictions.</p>
+            </a>
+            <a href="/tag/electrical-permits/" class="hp-cat-card">
+                <div class="hp-cat-icon hp-cat-icon--amber">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                </div>
+                <h3 class="hp-cat-title">Electrical Permits</h3>
+                <p class="hp-cat-desc">If you are planning to add new circuits, upgrade your electrical panel, or install outdoor lighting, an electrical permit is almost always required. Many homeowners do not realize that even replacing a breaker box or adding an outlet in a new location needs city approval.</p>
+            </a>
+            <a href="/tag/plumbing-permits/" class="hp-cat-card">
+                <div class="hp-cat-icon hp-cat-icon--cyan">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                </div>
+                <h3 class="hp-cat-title">Plumbing Permits</h3>
+                <p class="hp-cat-desc">Moving a sink, adding a bathroom, or running new water lines all require plumbing permits. Cities want to make sure your water connections meet code and that your drainage plans will not cause issues for the municipal sewer system.</p>
+            </a>
+            <a href="/tag/zoning-laws/" class="hp-cat-card">
+                <div class="hp-cat-icon hp-cat-icon--green">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <h3 class="hp-cat-title">Zoning &amp; Land Use</h3>
+                <p class="hp-cat-desc">Zoning laws determine what you can and cannot do with your property. Want to build a detached garage? Run a home business? Add a second story? Zoning regulations dictate all of this, and violating them can result in fines or being forced to tear down your work.</p>
+            </a>
+            <a href="/tag/hvac-permits/" class="hp-cat-card">
+                <div class="hp-cat-icon hp-cat-icon--red">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>
+                </div>
+                <h3 class="hp-cat-title">HVAC Permits</h3>
+                <p class="hp-cat-desc">Installing a new air conditioning system, replacing a furnace, or adding ductwork all need HVAC permits. These permits exist because improper installation can lead to carbon monoxide leaks, poor ventilation, and serious health risks for your family.</p>
+            </a>
+            <a href="/tag/roofing-permits/" class="hp-cat-card">
+                <div class="hp-cat-icon hp-cat-icon--purple">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"></path><path d="M5 21V7l7-4 7 4v14"></path><path d="M9 21v-6h6v6"></path></svg>
+                </div>
+                <h3 class="hp-cat-title">Roofing &amp; Siding</h3>
+                <p class="hp-cat-desc">Most cities require a permit for full roof replacements. Some even require permits for re-roofing over an existing layer. Siding replacement follows similar rules in many municipalities, especially when you are changing the exterior material type.</p>
+            </a>
+            <a href="/tag/deck-permits/" class="hp-cat-card">
+                <div class="hp-cat-icon hp-cat-icon--teal">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2"></rect><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"></path><line x1="12" y1="12" x2="12" y2="16"></line></svg>
+                </div>
+                <h3 class="hp-cat-title">Deck &amp; Patio Permits</h3>
+                <p class="hp-cat-desc">Building a deck seems simple, but most cities require a permit if the deck is above a certain height or if it will be attached to your house. The permit process usually requires a site plan showing the deck dimensions and distance from property lines.</p>
+            </a>
+            <a href="/tag/renovation-permits/" class="hp-cat-card">
+                <div class="hp-cat-icon hp-cat-icon--orange">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                </div>
+                <h3 class="hp-cat-title">Renovation Permits</h3>
+                <p class="hp-cat-desc">Kitchen remodels, bathroom renovations, and basement finishings often need permits, especially if you are moving plumbing or electrical. Even cosmetic changes like removing a load-bearing wall require structural review and approval before work begins.</p>
+            </a>
+        </div>
     </div>
 </section>
-{{/if}}
-{{/get}}
 
-<section class="post-feed-section">
+{{!-- ── HOW TO GET A PERMIT ────────────────────────────────────────── --}}
+<section class="hp-section hp-steps-section">
     <div class="container">
-        <div class="post-feed" data-feed-layout="{{@custom.feed_layout}}">
-            {{#foreach posts}}
+        <div class="hp-section-header">
+            <h2 class="hp-section-title">How to Get a Building Permit in 5 Steps</h2>
+            <p class="hp-section-desc">The permit process feels intimidating the first time, but it follows the same basic pattern in nearly every city across the country. Here is exactly what you need to do, step by step, from research to final inspection.</p>
+        </div>
+        <div class="hp-steps-grid">
+            <div class="hp-step">
+                <div class="hp-step-number">1</div>
+                <div class="hp-step-content">
+                    <h3 class="hp-step-title">Research Your Local Requirements</h3>
+                    <p class="hp-step-desc">Before you do anything else, visit your city or county building department website. Look for their permit guidelines, fee schedules, and required documents. Some cities have everything online, while others still require in-person visits. Call the permitting office if you are unsure about your specific project.</p>
+                </div>
+            </div>
+            <div class="hp-step">
+                <div class="hp-step-number">2</div>
+                <div class="hp-step-content">
+                    <h3 class="hp-step-title">Prepare Your Application &amp; Plans</h3>
+                    <p class="hp-step-desc">Most permit applications require detailed plans showing what you intend to build or modify. For simple projects, a hand-drawn sketch might suffice. For larger renovations, you may need architect-drawn blueprints. Include dimensions, materials, and how the work connects to existing systems.</p>
+                </div>
+            </div>
+            <div class="hp-step">
+                <div class="hp-step-number">3</div>
+                <div class="hp-step-content">
+                    <h3 class="hp-step-title">Submit &amp; Pay Fees</h3>
+                    <p class="hp-step-desc">Submit your completed application along with the required plans and permit fees. Fees vary widely depending on the project scope and your location. A simple deck permit might cost $100, while a full home addition could run into thousands. Many cities now accept online submissions.</p>
+                </div>
+            </div>
+            <div class="hp-step">
+                <div class="hp-step-number">4</div>
+                <div class="hp-step-content">
+                    <h3 class="hp-step-title">Schedule Inspections</h3>
+                    <p class="hp-step-desc">Once your permit is approved, you can start work. However, you will need to schedule inspections at various stages. Common inspection points include foundation, framing, electrical rough-in, plumbing rough-in, and final inspection. Never skip an inspection, as it can cause problems later.</p>
+                </div>
+            </div>
+            <div class="hp-step">
+                <div class="hp-step-number">5</div>
+                <div class="hp-step-content">
+                    <h3 class="hp-step-title">Get Final Approval &amp; Keep Records</h3>
+                    <p class="hp-step-desc">After the final inspection passes, you will receive a certificate of occupancy or completion. Keep this document along with all your permit paperwork in a safe place. You will need these records when you sell your home, as buyers and their inspectors will ask for proof that work was permitted.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{!-- ── POPULAR CITY GUIDES ───────────────────────────────────────── --}}
+<section class="hp-section hp-cities-section">
+    <div class="container">
+        <div class="hp-section-header">
+            <h2 class="hp-section-title">Find Permit Rules by City</h2>
+            <p class="hp-section-desc">Permit requirements are not the same everywhere. A project that needs three different permits in one city might need only one in another. We have researched permit rules for major cities across the country so you do not have to hunt for this information yourself.</p>
+        </div>
+        <div class="hp-cities-grid">
+            <a href="/tag/houston/" class="hp-city-card">
+                <div class="hp-city-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div class="hp-city-info">
+                    <h3 class="hp-city-name">Houston</h3>
+                    <p class="hp-city-desc">Houston has some of the most detailed building codes in Texas. The city requires separate permits for structural, electrical, plumbing, and mechanical work. Processing times typically range from two to four weeks depending on the complexity.</p>
+                </div>
+                <span class="hp-city-arrow" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+            <a href="/tag/phoenix/" class="hp-city-card">
+                <div class="hp-city-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div class="hp-city-info">
+                    <h3 class="hp-city-name">Phoenix</h3>
+                    <p class="hp-city-desc">Phoenix has streamlined its permit process significantly in recent years. The city offers online applications and same-day approval for simple residential projects like re-roofing and HVAC replacement. Larger projects still require plan review.</p>
+                </div>
+                <span class="hp-city-arrow" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+            <a href="/tag/san-antonio/" class="hp-city-card">
+                <div class="hp-city-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div class="hp-city-info">
+                    <h3 class="hp-city-name">San Antonio</h3>
+                    <p class="hp-city-desc">San Antonio follows the International Building Code with local amendments. The Development Services Department handles all residential permits. Expect a review period of five to ten business days for most standard home improvement projects.</p>
+                </div>
+                <span class="hp-city-arrow" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+            <a href="/tag/dallas/" class="hp-city-card">
+                <div class="hp-city-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div class="hp-city-info">
+                    <h3 class="hp-city-name">Dallas</h3>
+                    <p class="hp-city-desc">Dallas requires permits for most structural changes and all work involving electrical, plumbing, or mechanical systems. The city uses a tiered review system where simple projects get fast-tracked while complex additions go through full plan review.</p>
+                </div>
+                <span class="hp-city-arrow" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+            <a href="/tag/austin/" class="hp-city-card">
+                <div class="hp-city-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div class="hp-city-info">
+                    <h3 class="hp-city-name">Austin</h3>
+                    <p class="hp-city-desc">Austin has unique watershed protection rules that affect what you can build and where. In addition to standard building permits, projects near creeks or drainage areas may require environmental reviews. The city has moved most of its process online.</p>
+                </div>
+                <span class="hp-city-arrow" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+            <a href="/tag/jacksonville/" class="hp-city-card">
+                <div class="hp-city-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div class="hp-city-info">
+                    <h3 class="hp-city-name">Jacksonville</h3>
+                    <p class="hp-city-desc">Jacksonville requires permits through the Planning and Development Department. Florida has strict hurricane-related building codes, so even simple projects like screen enclosure additions must meet wind load requirements specified in the Florida Building Code.</p>
+                </div>
+                <span class="hp-city-arrow" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+        </div>
+    </div>
+</section>
+
+{{!-- ── COMMON MISTAKES ────────────────────────────────────────────── --}}
+<section class="hp-section hp-mistakes-section">
+    <div class="container">
+        <div class="hp-section-header">
+            <h2 class="hp-section-title">Common Permit Mistakes Homeowners Make</h2>
+            <p class="hp-section-desc">We see the same mistakes over and over again. These errors can cost you thousands of dollars in fines, force you to undo completed work, or create serious safety hazards. Here are the most common ones and how to avoid them.</p>
+        </div>
+        <div class="hp-mistakes-grid">
+            <div class="hp-mistake-card">
+                <div class="hp-mistake-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                </div>
+                <h3 class="hp-mistake-title">Skipping Permits Entirely</h3>
+                <p class="hp-mistake-desc">This is by far the biggest mistake. Homeowners often think small projects do not need permits, but the definition of "permit-required work" is broader than most people realize. Fines for unpermitted work can range from $500 to $25,000 depending on your city.</p>
+            </div>
+            <div class="hp-mistake-card">
+                <div class="hp-mistake-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                </div>
+                <h3 class="hp-mistake-title">Starting Work Before Approval</h3>
+                <p class="hp-mistake-desc">Some homeowners submit a permit application and immediately start demolition or construction. If your permit gets denied, you may have to restore everything to its original condition at your own expense. Always wait for written approval.</p>
+            </div>
+            <div class="hp-mistake-card">
+                <div class="hp-mistake-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <h3 class="hp-mistake-title">Missing Inspection Deadlines</h3>
+                <p class="hp-mistake-desc">Permits have expiration dates, usually 6 to 12 months. If you miss inspections or let the permit lapse, you may have to start the entire process over. Schedule inspections promptly at each stage of your project and keep track of deadlines.</p>
+            </div>
+            <div class="hp-mistake-card">
+                <div class="hp-mistake-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                </div>
+                <h3 class="hp-mistake-title">Ignoring Zoning Setbacks</h3>
+                <p class="hp-mistake-desc">Every property has setback requirements that dictate how close you can build to property lines, streets, and other structures. Ignoring these rules is one of the most common reasons permits get denied. Always check setback rules before designing your project.</p>
+            </div>
+            <div class="hp-mistake-card">
+                <div class="hp-mistake-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <h3 class="hp-mistake-title">Hiring Unlicensed Contractors</h3>
+                <p class="hp-mistake-desc">In most states, unlicensed contractors cannot legally pull permits on your behalf. If something goes wrong, you have very little recourse. Always verify a contractor's license number with your state licensing board before signing any agreement.</p>
+            </div>
+            <div class="hp-mistake-card">
+                <div class="hp-mistake-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                </div>
+                <h3 class="hp-mistake-title">Not Keeping Permit Records</h3>
+                <p class="hp-mistake-desc">When it comes time to sell your house, the buyer's home inspector will ask for permit records on any modifications. Without them, you may face delays in closing or be forced to get retroactive permits, which can be complicated and expensive.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{!-- ── PERMIT COSTS GUIDE ────────────────────────────────────────── --}}
+<section class="hp-section hp-costs-section">
+    <div class="container">
+        <div class="hp-section-header">
+            <h2 class="hp-section-title">Understanding Permit Costs</h2>
+            <p class="hp-section-desc">One of the first questions every homeowner asks is how much a permit will cost. The answer depends on several factors, including where you live, the type of work, and the total value of the project. Here is a realistic breakdown so you can budget properly.</p>
+        </div>
+        <div class="hp-costs-grid">
+            <div class="hp-cost-card">
+                <div class="hp-cost-header">
+                    <h3 class="hp-cost-type">Small Projects</h3>
+                    <span class="hp-cost-range">$50 - $300</span>
+                </div>
+                <p class="hp-cost-desc">Minor repairs like replacing a water heater, re-roofing, or adding an outlet typically fall in this range. These permits are usually processed quickly, often within a few business days. Some cities even offer same-day over-the-counter permits for straightforward residential work.</p>
+                <ul class="hp-cost-list">
+                    <li>Water heater replacement</li>
+                    <li>Re-roofing (same material)</li>
+                    <li>Window replacement</li>
+                    <li>Fence installation</li>
+                </ul>
+            </div>
+            <div class="hp-cost-card hp-cost-card--featured">
+                <div class="hp-cost-badge">Most Common</div>
+                <div class="hp-cost-header">
+                    <h3 class="hp-cost-type">Medium Projects</h3>
+                    <span class="hp-cost-range">$300 - $1,500</span>
+                </div>
+                <p class="hp-cost-desc">Room additions, deck construction, and kitchen remodels with plumbing or electrical changes fall into this bracket. These require plan review and multiple inspections. Processing usually takes two to four weeks depending on your city's backlog and the complexity of your plans.</p>
+                <ul class="hp-cost-list">
+                    <li>Room addition</li>
+                    <li>Deck construction</li>
+                    <li>Kitchen remodel</li>
+                    <li>Bathroom addition</li>
+                </ul>
+            </div>
+            <div class="hp-cost-card">
+                <div class="hp-cost-header">
+                    <h3 class="hp-cost-type">Large Projects</h3>
+                    <span class="hp-cost-range">$1,500 - $5,000+</span>
+                </div>
+                <p class="hp-cost-desc">New construction, second-story additions, and major structural changes require the most extensive review. These projects need architect-stamped drawings, structural engineering calculations, and often a series of inspections at every stage of construction from foundation to final.</p>
+                <ul class="hp-cost-list">
+                    <li>New home construction</li>
+                    <li>Second-story addition</li>
+                    <li>Detached ADU/granny flat</li>
+                    <li>Complete gut renovation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{!-- ── KNOW YOUR RIGHTS ───────────────────────────────────────────── --}}
+<section class="hp-section hp-rights-section">
+    <div class="container">
+        <div class="hp-section-header">
+            <h2 class="hp-section-title">Know Your Rights as a Homeowner</h2>
+            <p class="hp-section-desc">Understanding your rights when dealing with building departments and contractors can save you from expensive problems. Many homeowners do not realize they have significant protections under state and local laws.</p>
+        </div>
+        <div class="hp-rights-grid">
+            <div class="hp-right-card">
+                <div class="hp-right-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <h3 class="hp-right-title">Right to Appeal a Denial</h3>
+                <p class="hp-right-desc">If your permit application gets denied, you have the right to know exactly why. Every denial must be based on specific code violations or zoning rules. You can appeal the decision to a zoning board or building board of appeals in most jurisdictions. Many denials are resolved by making minor modifications to your plans.</p>
+            </div>
+            <div class="hp-right-card">
+                <div class="hp-right-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                </div>
+                <h3 class="hp-right-title">Protection Against Contractor Fraud</h3>
+                <p class="hp-right-desc">Most states require contractors to carry a license, insurance, and a written contract for projects above a certain dollar amount. You have the right to a three-day cooling-off period for contracts signed at your home. If a contractor abandons your project, you can file a complaint with the state licensing board.</p>
+            </div>
+            <div class="hp-right-card">
+                <div class="hp-right-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <h3 class="hp-right-title">Reasonable Timeline Expectations</h3>
+                <p class="hp-right-desc">Building departments are required to process permit applications within a reasonable timeframe. Most states have laws that set maximum review periods. Simple permits should be processed in days, not weeks. If your city is consistently taking months, you may have grounds to escalate the matter.</p>
+            </div>
+            <div class="hp-right-card">
+                <div class="hp-right-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                </div>
+                <h3 class="hp-right-title">Access to Public Records</h3>
+                <p class="hp-right-desc">Building permits, inspection reports, and code enforcement records are public information in most states. You can look up permits on any property, including your neighbors'. This is useful when you are buying a home and want to verify that previous renovations were done legally and inspected properly.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{!-- ── FAQ SECTION ────────────────────────────────────────────────── --}}
+<section class="hp-section hp-faq-section">
+    <div class="container">
+        <div class="hp-section-header">
+            <h2 class="hp-section-title">Frequently Asked Questions</h2>
+            <p class="hp-section-desc">These are the questions homeowners ask us most often. If your question is not answered here, use the search bar above or browse our guides by city and permit type.</p>
+        </div>
+        <div class="hp-faq-list">
+            <details class="hp-faq-item">
+                <summary class="hp-faq-question">Do I really need a permit for a small renovation?</summary>
+                <div class="hp-faq-answer">
+                    <p>It depends on your city, but in most cases, yes. Even seemingly minor work like moving a plumbing fixture, adding an electrical circuit, or removing a non-load-bearing wall often requires a permit. The general rule is this: if the work changes the structure, systems, or safety of your home, you probably need a permit. Painting, flooring, and cosmetic updates usually do not require one. Always check with your local building department before starting any project.</p>
+                </div>
+            </details>
+            <details class="hp-faq-item">
+                <summary class="hp-faq-question">What happens if I build without a permit?</summary>
+                <div class="hp-faq-answer">
+                    <p>The consequences vary by city but can be severe. Common penalties include fines ranging from $500 to $25,000, a stop-work order that halts your project immediately, and a requirement to tear down or undo the unpermitted work. Some cities also impose daily fines that add up quickly. When you sell your home, unpermitted work must be disclosed, and it can significantly reduce your property value or scare away buyers entirely.</p>
+                </div>
+            </details>
+            <details class="hp-faq-item">
+                <summary class="hp-faq-question">How long does it take to get a permit approved?</summary>
+                <div class="hp-faq-answer">
+                    <p>Timeline varies based on the project and location. Simple permits like re-roofing or HVAC replacement can often be approved same-day or within a few business days. Medium projects like room additions or kitchen remodels typically take two to four weeks for plan review. Large projects requiring structural engineering review can take four to eight weeks. Some cities offer expedited review for an additional fee if you are working under a tight deadline.</p>
+                </div>
+            </details>
+            <details class="hp-faq-item">
+                <summary class="hp-faq-question">Can I pull a permit myself or does my contractor do it?</summary>
+                <div class="hp-faq-answer">
+                    <p>In most cities, homeowners can pull their own permits for work on their primary residence. However, some types of work require a licensed contractor to pull the permit. Electrical and plumbing permits often fall into this category depending on your state. When hiring a contractor, make sure the contract clearly states who is responsible for obtaining permits. A reputable contractor will handle the permit process as part of their service.</p>
+                </div>
+            </details>
+            <details class="hp-faq-item">
+                <summary class="hp-faq-question">Do I need a permit for a shed or storage building?</summary>
+                <div class="hp-faq-answer">
+                    <p>In many cities, small sheds under 120 square feet do not require a building permit. However, rules vary widely. Some cities exempt sheds under 200 square feet, while others require permits for any permanent structure regardless of size. If the shed will have electricity or plumbing, you will definitely need separate permits for those systems. Always check your local zoning ordinance before building.</p>
+                </div>
+            </details>
+            <details class="hp-faq-item">
+                <summary class="hp-faq-question">What is the difference between a building permit and zoning approval?</summary>
+                <div class="hp-faq-answer">
+                    <p>A building permit focuses on the physical construction: structural integrity, electrical safety, plumbing code compliance, and fire safety. Zoning approval, on the other hand, deals with how the property is used and what can be built on it. Zoning rules cover things like setback distances, building height limits, property use categories, and lot coverage ratios. You typically need both for any significant project.</p>
+                </div>
+            </details>
+            <details class="hp-faq-item">
+                <summary class="hp-faq-question">Will a permit increase my property taxes?</summary>
+                <div class="hp-faq-answer">
+                    <p>Possibly, but usually the increase is modest and reflects the actual increase in your home's value. When you add a room, finish a basement, or build an addition, the improved space increases your property's assessed value. This is generally a good thing because it means your investment is recognized. The tax increase is typically a small fraction of the value added. Cosmetic improvements like painting or new flooring usually do not affect your tax assessment.</p>
+                </div>
+            </details>
+            <details class="hp-faq-item">
+                <summary class="hp-faq-question">Can a homeowner do their own electrical or plumbing work?</summary>
+                <div class="hp-faq-answer">
+                    <p>This varies significantly by state and city. Some jurisdictions allow homeowners to perform their own electrical and plumbing work on their primary residence if they live there and pass a homeowner's exam. Others require all electrical and plumbing work to be performed by licensed professionals. Even when homeowners are allowed to do the work themselves, the work must still pass inspection. We recommend checking your local regulations before attempting any DIY electrical or plumbing projects.</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+{{!-- ── AUTHOR BIO ─────────────────────────────────────────────────── --}}
+<section class="hp-section hp-author-section">
+    <div class="container">
+        <div class="hp-author-card">
+            <div class="hp-author-avatar-wrap">
+                <div class="hp-author-avatar">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <div class="hp-author-badge">Expert</div>
+            </div>
+            <div class="hp-author-info">
+                <h2 class="hp-author-name">Wasim Akram Developer</h2>
+                <p class="hp-author-role">Founder &amp; Researcher, HomePermitPro</p>
+                <p class="hp-author-bio">I started HomePermitPro after spending months trying to figure out permit requirements for my own home renovation. The information was scattered, outdated, and often contradictory. I built this resource so no other homeowner has to go through that same frustration. Every guide on this site is researched using actual city building codes, verified against current regulations, and reviewed for accuracy before publication.</p>
+                <a href="mailto:prodigitalwasim@gmail.com" class="hp-author-contact">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    prodigitalwasim@gmail.com
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{!-- ── LATEST BLOG POSTS ─────────────────────────────────────────── --}}
+<section class="hp-section hp-blog-section">
+    <div class="container">
+        <div class="hp-section-header">
+            <h2 class="hp-section-title">Latest Permit Guides</h2>
+            <p class="hp-section-desc">Stay informed with our newest articles on building permits, zoning updates, and local regulations. We publish new guides every week based on the latest code changes and real homeowner experiences.</p>
+        </div>
+        <div class="hp-blog-grid">
+            {{#foreach posts limit="6"}}
             {{> post-card}}
             {{/foreach}}
         </div>
     </div>
 </section>
 
-{{> pagination}}
+{{!-- ── NEWSLETTER CTA ─────────────────────────────────────────────── --}}
+{{> newsletter-cta}}

@@ -63,15 +63,6 @@
     },
     "card_assets": true,
     "custom": {
-      "feed_layout": {
-        "type": "select",
-        "options": [
-          "Grid",
-          "List",
-          "Compact"
-        ],
-        "default": "Grid"
-      },
       "show_author_bio": {
         "type": "boolean",
         "default": true
