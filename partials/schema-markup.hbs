@@ -1,0 +1,144 @@
+{{!-- JSON-LD Structured Data for SEO ----}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{@site.title}}",
+    "url": "{{@site.url}}",
+    {{#if @site.description}}
+    "description": "{{@site.description}}",
+    {{/if}}
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{@site.url}}/search/{{query_string}}",
+        "query-input": "required name=search_term_string"
+    }
+}
+</script>
+
+{{#is "home"}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "{{@site.title}}",
+    "url": "{{@site.url}}",
+    {{#if @site.description}}
+    "description": "{{@site.description}}",
+    {{/if}}
+    "publisher": {
+        "@type": "Organization",
+        "name": "{{@site.title}}",
+        "url": "{{@site.url}}"{{#if @site.logo}},
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{img_url @site.logo size="lg"}}"
+        }{{/if}}
+    }
+}
+</script>
+{{/is}}
+
+{{#is "post"}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{title}}",
+    "url": "{{canonical_url}}",
+    {{#if custom_excerpt}}
+    "description": "{{custom_excerpt}}",
+    {{/if}}
+    "datePublished": "{{date published_at format="YYYY-MM-DDTHH:mm:ssZ"}}",
+    "dateModified": "{{date updated_at format="YYYY-MM-DDTHH:mm:ssZ"}}",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{canonical_url}}"
+    },
+    "author": [
+        {{#foreach authors}}
+        {
+            "@type": "Person",
+            "name": "{{name}}"{{#if profile_image}},
+            "image": "{{img_url profile_image size="sm"}}"{{/if}}{{#if website}},
+            "url": "{{website}}"{{/if}}{{#if bio}},
+            "description": "{{bio}}"{{/if}}
+        }{{#unless @last}},{{/unless}}
+        {{/foreach}}
+    ],
+    "publisher": {
+        "@type": "Organization",
+        "name": "{{@site.title}}",
+        "url": "{{@site.url}}"{{#if @site.logo}},
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{img_url @site.logo size="lg"}}"
+        }{{/if}}
+    }{{#if feature_image}},
+    "image": {
+        "@type": "ImageObject",
+        "url": "{{img_url feature_image size="lg"}}"
+    }{{/if}}{{#if primary_tag}},
+    "articleSection": "{{primary_tag.name}}"{{/if}},
+    "keywords": [{{#foreach tags}}"{{name}}"{{#unless @last}}, {{/unless}}{{/foreach}}]
+}
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "{{@site.url}}"
+        }{{#if primary_tag}},
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "{{primary_tag.name}}",
+            "item": "{{primary_tag.url absolute="true"}}"
+        }{{/if}},
+        {
+            "@type": "ListItem",
+            "position": {{#if primary_tag}}3{{else}}2{{/if}},
+            "name": "{{title}}",
+            "item": "{{canonical_url}}"
+        }
+    ]
+}
+</script>
+{{/is}}
+
+{{#is "author"}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "mainEntity": {
+        "@type": "Person",
+        "name": "{{primary_author.name}}"{{#if primary_author.bio}},
+        "description": "{{primary_author.bio}}"{{/if}}{{#if primary_author.website}},
+        "url": "{{primary_author.website}}"{{/if}}{{#if primary_author.profile_image}},
+        "image": "{{img_url primary_author.profile_image size="lg"}}"{{/if}},
+        "sameAs": []
+    }
+}
+</script>
+{{/is}}
+
+{{#is "tag"}}
+{{#tag}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "{{name}}",
+    "url": "{{url absolute="true"}}"{{#if description}},
+    "description": "{{description}}"{{/if}}
+}
+</script>
+{{/tag}}
+{{/is}}

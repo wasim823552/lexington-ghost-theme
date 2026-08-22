@@ -1,0 +1,21 @@
+{{!-- Breadcrumbs ----}}
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{@site.url}}" class="breadcrumb-link">Home</a>
+    <span class="breadcrumb-separator" aria-hidden="true">/</span>
+    {{#is "tag"}}
+    <span class="breadcrumb-current">{{tag.name}}</span>
+    {{/is}}
+    {{#is "author"}}
+    <span class="breadcrumb-current">{{primary_author.name}}</span>
+    {{/is}}
+    {{#is "post"}}
+    {{#if primary_tag}}
+    <a href="{{primary_tag.url}}" class="breadcrumb-link">{{primary_tag.name}}</a>
+    <span class="breadcrumb-separator" aria-hidden="true">/</span>
+    {{/if}}
+    <span class="breadcrumb-current">{{title}}</span>
+    {{/is}}
+    {{#is "page"}}
+    <span class="breadcrumb-current">{{title}}</span>
+    {{/is}}
+</nav>

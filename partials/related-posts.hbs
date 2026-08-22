@@ -1,0 +1,15 @@
+{{!-- Related Posts ----}}
+{{#if @custom.show_related_posts}}
+{{#get "posts" filter="id:-{{id}}+tag:{{primary_tag.slug}}" limit="3" as |related|}}
+{{#if related}}
+<section class="related-posts">
+    <h3 class="related-posts-title">Related Articles</h3>
+    <div class="related-posts-grid">
+        {{#foreach related}}
+        {{> post-card}}
+        {{/foreach}}
+    </div>
+</section>
+{{/if}}
+{{/get}}
+{{/if}}

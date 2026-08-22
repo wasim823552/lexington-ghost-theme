@@ -1,0 +1,30 @@
+{{!-- Navigation - Desktop + Mobile --}}
+<nav class="main-nav" aria-label="Main navigation">
+    <ul class="nav-list" id="nav-list" role="menubar">
+        {{#foreach navigation}}
+        <li class="nav-item" role="none">
+            <a href="{{url absolute="true"}}" class="nav-link" role="menuitem"{{#if current}} aria-current="page"{{/if}}>{{label}}</a>
+        </li>
+        {{/foreach}}
+    </ul>
+</nav>
+
+<div class="mobile-nav-overlay" id="mobile-nav-overlay" aria-hidden="true"></div>
+
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Mobile navigation" aria-modal="true" aria-hidden="true">
+    <div class="mobile-nav-header">
+        <button class="mobile-nav-close" id="mobile-nav-close" type="button" aria-label="Close menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+    </div>
+    <ul class="mobile-nav-list" role="menu">
+        {{#foreach navigation}}
+        <li class="mobile-nav-item" role="none">
+            <a href="{{url absolute="true"}}" class="mobile-nav-link" role="menuitem"{{#if current}} aria-current="page"{{/if}}>{{label}}</a>
+        </li>
+        {{/foreach}}
+    </ul>
+    <div class="mobile-nav-footer">
+        <a href="{{@site.url}}/signup/" class="mobile-nav-subscribe btn btn-primary">Subscribe</a>
+    </div>
+</div>

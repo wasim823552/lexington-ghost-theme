@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}"{{#if @custom.accent_color}} data-theme="{{@custom.accent_color}}"{{/if}}>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root{--accent:#2563eb;--accent-hover:#1d4ed8;--accent-light:rgba(37,99,235,.08);--accent-lighter:rgba(37,99,235,.04);--bg:#fff;--bg-secondary:#f8fafc;--bg-tertiary:#f1f5f9;--text-primary:#0f172a;--text-secondary:#475569;--text-muted:#94a3b8;--border:#e2e8f0;--border-light:#f1f5f9;--card-bg:#fff;--card-shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);--card-shadow-hover:0 10px 25px rgba(0,0,0,.08);--radius:12px;--radius-sm:8px;--radius-lg:16px;--max-width:1280px;--header-height:68px;--font-sans:'Inter',system-ui,-apple-system,sans-serif;--font-serif:'Merriweather',Georgia,serif;--transition:200ms ease}
+        [data-theme=Green]{--accent:#059669;--accent-hover:#047857}[data-theme=Red]{--accent:#dc2626;--accent-hover:#b91c1c}[data-theme=Purple]{--accent:#7c3aed;--accent-hover:#6d28d9}[data-theme=Orange]{--accent:#ea580c;--accent-hover:#c2410c}[data-theme=Teal]{--accent:#0d9488;--accent-hover:#0f766e}
+        @media(prefers-color-scheme:dark){:root:not([data-theme-manual]){--bg:#0f172a;--bg-secondary:#1e293b;--bg-tertiary:#162032;--text-primary:#f1f5f9;--text-secondary:#cbd5e1;--text-muted:#64748b;--border:#334155;--border-light:#1e293b;--card-bg:#1e293b;--card-shadow:0 1px 3px rgba(0,0,0,.2);--card-shadow-hover:0 10px 25px rgba(0,0,0,.3)}}
+        .dark{--bg:#0f172a;--bg-secondary:#1e293b;--bg-tertiary:#162032;--text-primary:#f1f5f9;--text-secondary:#cbd5e1;--text-muted:#64748b;--border:#334155;--border-light:#1e293b;--card-bg:#1e293b;--card-shadow:0 1px 3px rgba(0,0,0,.2);--card-shadow-hover:0 10px 25px rgba(0,0,0,.3)}
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font-sans);color:var(--text-primary);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}img{max-width:100%;height:auto;display:block}a{color:var(--accent);text-decoration:none;transition:color var(--transition)}a:hover{color:var(--accent-hover)}ul,ol{list-style:none}button{cursor:pointer;font-family:inherit;border:none;background:none}.container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 20px}@media(min-width:768px){.container{padding:0 32px}}
+    </style>
+    <title>{{meta_title}}</title>
+    <link rel="canonical" href="{{canonical_url}}">
+    <meta property="og:site_name" content="{{@site.title}}">
+    <meta property="og:type" content="{{#if isHome}}website{{else}}article{{/if}}">
+    <meta property="og:title" content="{{meta_title}}">
+    <meta property="og:url" content="{{canonical_url}}">
+    <meta property="og:locale" content="en_US">
+    {{#if feature_image}}
+    <meta property="og:image" content="{{img_url feature_image size="lg"}}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    {{else if @site.cover_image}}
+    <meta property="og:image" content="{{img_url @site.cover_image size="lg"}}">
+    {{else if @site.icon}}
+    <meta property="og:image" content="{{img_url @site.icon size="lg"}}">
+    {{/if}}
+    {{#is "post"}}
+    <meta property="article:published_time" content="{{date published_at format="YYYY-MM-DDTHH:mm:ssZ"}}">
+    <meta property="article:modified_time" content="{{date updated_at format="YYYY-MM-DDTHH:mm:ssZ"}}">
+    <meta property="article:author" content="{{#foreach authors}}{{name}}{{#unless @last}}, {{/unless}}{{/foreach}}">
+    <meta property="article:section" content="{{#if primary_tag}}{{primary_tag.name}}{{/if}}">
+    {{#foreach tags}}
+    <meta property="article:tag" content="{{name}}">
+    {{/foreach}}
+    {{/is}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{meta_title}}">
+    {{#if feature_image}}
+    <meta name="twitter:image" content="{{img_url feature_image size="lg"}}">
+    {{else if @site.icon}}
+    <meta name="twitter:image" content="{{img_url @site.icon size="lg"}}">
+    {{/if}}
+    <link rel="alternate" type="application/rss+xml" title="{{@site.title}}" href="{{@site.url}}/rss/">
+    {{#if @site.icon}}
+    <link rel="icon" href="{{img_url @site.icon size="xs"}}" type="image/png">
+    {{/if}}
+    {{ghost_head}}
+    {{> schema-markup}}
+    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
+</head>
+<body class="{{body_class}}">
+    {{#is "post"}}
+    {{#if @custom.show_reading_progress}}
+    <div class="reading-progress-bar" id="reading-progress" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    {{/if}}
+    {{/is}}
+    <a href="#main-content" class="skip-link">Skip to main content</a>

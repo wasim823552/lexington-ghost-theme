@@ -1,0 +1,15 @@
+{{!-- YMYL Disclaimer - Legal Compliance --}}
+{{#is "post"}}
+{{#if @custom.show_disclaimer}}
+<aside class="disclaimer-box" aria-label="Disclaimer">
+    <div class="disclaimer-box-inner">
+        <div class="disclaimer-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        </div>
+        <div class="disclaimer-content">
+            <strong>Disclaimer:</strong> This article is for informational purposes only and does not constitute legal advice. Building codes, zoning laws, and permit requirements vary by jurisdiction and change frequently. Always verify current requirements with your local building department or municipal office before starting any construction project.
+        </div>
+    </div>
+</aside>
+{{/if}}
+{{/is}}

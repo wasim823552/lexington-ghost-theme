@@ -1,0 +1,41 @@
+{{!-- Site Footer with Legal Compliance --}}
+<footer class="site-footer">
+    <div class="footer-inner container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                {{#if @site.logo}}
+                <a href="{{@site.url}}" class="footer-logo" aria-label="{{@site.title}}">
+                    <img src="{{img_url @site.logo size="medium"}}" alt="{{@site.title}}" width="160" height="40" loading="lazy">
+                </a>
+                {{else}}
+                <a href="{{@site.url}}" class="footer-logo-text">{{@site.title}}</a>
+                {{/if}}
+                {{#if @site.description}}
+                <p class="footer-description">{{@site.description}}</p>
+                {{/if}}
+            </div>
+            <div class="footer-links">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-list">
+                    {{#foreach navigation limit="5"}}
+                    <li class="footer-list-item">
+                        <a href="{{url absolute="true"}}" class="footer-link">{{label}}</a>
+                    </li>
+                    {{/foreach}}
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3 class="footer-heading">Resources</h3>
+                <ul class="footer-list">
+                    <li class="footer-list-item"><a href="{{@site.url}}/rss/" class="footer-link">RSS Feed</a></li>
+                    <li class="footer-list-item"><a href="{{@site.url}}/sitemap.xml" class="footer-link">Sitemap</a></li>
+                    <li class="footer-list-item"><a href="{{@site.url}}/signin/" class="footer-link">Member Sign In</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">&copy; {{date format="YYYY"}} {{@site.title}}. All rights reserved.</p>
+            <p class="footer-credit">Published with <a href="https://ghost.org" rel="noopener noreferrer" target="_blank">Ghost</a> and the <a href="https://github.com/wasimakramdev/lexington-ghost-theme" rel="noopener noreferrer" target="_blank">Lexington</a> theme by <a href="https://github.com/wasimakramdev" rel="noopener noreferrer" target="_blank">Wasim Akram Developer</a>.</p>
+        </div>
+    </div>
+</footer>
