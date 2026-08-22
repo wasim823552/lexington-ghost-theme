@@ -5,6 +5,12 @@
    Mobile-First Responsive | Dark Mode | YMYL Optimized
    ======================================================================== */
 
+/* ── Ghost Font Settings ───────────────────────────────────────────── */
+:root {
+    --gh-font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+    --gh-font-body: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
 /* ── Reset & Base ─────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }

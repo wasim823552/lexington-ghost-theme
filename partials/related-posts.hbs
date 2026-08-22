@@ -1,4 +1,4 @@
-{{!-- Related Posts ----}}
+{{!-- Related Posts --}}
 {{#if @custom.show_related_posts}}
 {{#get "posts" filter="id:-{{id}}+tag:{{primary_tag.slug}}" limit="3" as |related|}}
 {{#if related}}

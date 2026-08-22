@@ -13,25 +13,63 @@
   },
   "gpm": {
     "type": "theme",
-    "categories": ["Minimal", "Magazine", "Blog", "SEO-Optimized"]
+    "categories": [
+      "Minimal",
+      "Magazine",
+      "Blog",
+      "SEO-Optimized"
+    ]
   },
-  "keywords": ["ghost-theme", "premium", "seo", "responsive", "dark-mode", "schema-markup", "reading-progress", "search", "members", "eeat", "ymyl", "accessible", "fast", "lexington"],
+  "keywords": [
+    "ghost-theme",
+    "premium",
+    "seo",
+    "responsive",
+    "dark-mode",
+    "schema-markup",
+    "reading-progress",
+    "search",
+    "members",
+    "eeat",
+    "ymyl",
+    "accessible",
+    "fast",
+    "lexington"
+  ],
   "config": {
     "posts_per_page": 12,
     "image_sizes": {
-      "xxs": { "width": 30 },
-      "xs": { "width": 100 },
-      "sm": { "width": 300 },
-      "md": { "width": 600 },
-      "lg": { "width": 1000 },
-      "xl": { "width": 1400 },
-      "xxl": { "width": 2000 }
+      "xxs": {
+        "width": 30
+      },
+      "xs": {
+        "width": 100
+      },
+      "sm": {
+        "width": 300
+      },
+      "md": {
+        "width": 600
+      },
+      "lg": {
+        "width": 1000
+      },
+      "xl": {
+        "width": 1400
+      },
+      "xxl": {
+        "width": 2000
+      }
     },
     "card_assets": true,
     "custom": {
       "feed_layout": {
         "type": "select",
-        "options": ["Grid", "List", "Compact"],
+        "options": [
+          "Grid",
+          "List",
+          "Compact"
+        ],
         "default": "Grid"
       },
       "show_author_bio": {
@@ -68,9 +106,19 @@
       },
       "accent_color": {
         "type": "select",
-        "options": ["Blue", "Green", "Red", "Purple", "Orange", "Teal"],
+        "options": [
+          "Blue",
+          "Green",
+          "Red",
+          "Purple",
+          "Orange",
+          "Teal"
+        ],
         "default": "Blue"
       }
     }
+  },
+  "devDependencies": {
+    "gscan": "^6.4.2"
   }
 }
