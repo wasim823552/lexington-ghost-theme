@@ -8,6 +8,7 @@
 {{!-- ── HERO SECTION ───────────────────────────────────────────────── --}}
 <section class="hp-hero">
     <div class="hp-hero-bg" aria-hidden="true"></div>
+    <div class="hp-hero-pattern" aria-hidden="true"></div>
     <div class="hp-hero-inner container">
         <div class="hp-hero-badge">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
@@ -36,27 +37,64 @@
     <div class="container">
         <div class="hp-stats-grid">
             <div class="hp-stat">
-                <div class="hp-stat-number">1,200+</div>
+                <div class="hp-stat-number" data-count="1200" data-suffix="+">0</div>
                 <div class="hp-stat-label">In-Depth Guides</div>
             </div>
             <div class="hp-stat">
-                <div class="hp-stat-number">500+</div>
+                <div class="hp-stat-number" data-count="500" data-suffix="+">0</div>
                 <div class="hp-stat-label">Cities Covered</div>
             </div>
             <div class="hp-stat">
-                <div class="hp-stat-number">Weekly</div>
-                <div class="hp-stat-label">Content Updates</div>
+                <div class="hp-stat-number" data-count="50000" data-suffix="+" data-prefix="">0</div>
+                <div class="hp-stat-label">Homeowners Served</div>
             </div>
             <div class="hp-stat">
-                <div class="hp-stat-number">100%</div>
+                <div class="hp-stat-number" data-count="100" data-suffix="%">0</div>
                 <div class="hp-stat-label">Free to Use</div>
             </div>
         </div>
     </div>
 </section>
 
+{{!-- ── FEATURED POST (Magazine Layout) ────────────────────────────── --}}
+{{#get "posts" filter="featured:true" limit="1" as |featured|}}
+{{#if featured}}
+<section class="hp-featured hp-reveal">
+    <div class="container">
+        {{#foreach featured}}
+        <a href="{{url absolute="true"}}" class="hp-featured-card">
+            {{#if feature_image}}
+            <div class="hp-featured-img">
+                <img src="{{img_url feature_image size="xl"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" loading="eager">
+                <div class="hp-featured-overlay"></div>
+            </div>
+            {{/if}}
+            <div class="hp-featured-body">
+                <span class="hp-featured-label">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Featured Guide
+                </span>
+                <h2 class="hp-featured-title">{{title}}</h2>
+                {{#if custom_excerpt}}
+                <p class="hp-featured-excerpt">{{custom_excerpt}}</p>
+                {{/if}}
+                <div class="hp-featured-meta">
+                    {{#foreach authors}}
+                    <span>{{name}}</span>{{#unless @last}}, {{/unless}}
+                    {{/foreach}}
+                    <span aria-hidden="true">&middot;</span>
+                    <span>{{reading_time}}</span>
+                </div>
+            </div>
+        </a>
+        {{/foreach}}
+    </div>
+</section>
+{{/if}}
+{{/get}}
+
 {{!-- ── PERMIT CATEGORIES ──────────────────────────────────────────── --}}
-<section class="hp-section hp-categories">
+<section class="hp-section hp-categories hp-reveal">
     <div class="container">
         <div class="hp-section-header">
             <h2 class="hp-section-title">What Permits Do You Need?</h2>
@@ -124,7 +162,7 @@
 </section>
 
 {{!-- ── HOW TO GET A PERMIT ────────────────────────────────────────── --}}
-<section class="hp-section hp-steps-section">
+<section class="hp-section hp-steps-section hp-reveal">
     <div class="container">
         <div class="hp-section-header">
             <h2 class="hp-section-title">How to Get a Building Permit in 5 Steps</h2>
@@ -171,7 +209,7 @@
 </section>
 
 {{!-- ── POPULAR CITY GUIDES ───────────────────────────────────────── --}}
-<section class="hp-section hp-cities-section">
+<section class="hp-section hp-cities-section hp-reveal">
     <div class="container">
         <div class="hp-section-header">
             <h2 class="hp-section-title">Find Permit Rules by City</h2>
@@ -255,7 +293,7 @@
 </section>
 
 {{!-- ── COMMON MISTAKES ────────────────────────────────────────────── --}}
-<section class="hp-section hp-mistakes-section">
+<section class="hp-section hp-mistakes-section hp-reveal">
     <div class="container">
         <div class="hp-section-header">
             <h2 class="hp-section-title">Common Permit Mistakes Homeowners Make</h2>
@@ -309,7 +347,7 @@
 </section>
 
 {{!-- ── PERMIT COSTS GUIDE ────────────────────────────────────────── --}}
-<section class="hp-section hp-costs-section">
+<section class="hp-section hp-costs-section hp-reveal">
     <div class="container">
         <div class="hp-section-header">
             <h2 class="hp-section-title">Understanding Permit Costs</h2>
@@ -361,7 +399,7 @@
 </section>
 
 {{!-- ── KNOW YOUR RIGHTS ───────────────────────────────────────────── --}}
-<section class="hp-section hp-rights-section">
+<section class="hp-section hp-rights-section hp-reveal">
     <div class="container">
         <div class="hp-section-header">
             <h2 class="hp-section-title">Know Your Rights as a Homeowner</h2>
@@ -401,7 +439,7 @@
 </section>
 
 {{!-- ── FAQ SECTION ────────────────────────────────────────────────── --}}
-<section class="hp-section hp-faq-section">
+<section class="hp-section hp-faq-section hp-reveal">
     <div class="container">
         <div class="hp-section-header">
             <h2 class="hp-section-title">Frequently Asked Questions</h2>
@@ -456,6 +494,69 @@
                     <p>This varies significantly by state and city. Some jurisdictions allow homeowners to perform their own electrical and plumbing work on their primary residence if they live there and pass a homeowner's exam. Others require all electrical and plumbing work to be performed by licensed professionals. Even when homeowners are allowed to do the work themselves, the work must still pass inspection. We recommend checking your local regulations before attempting any DIY electrical or plumbing projects.</p>
                 </div>
             </details>
+        </div>
+    </div>
+</section>
+
+{{!-- ── TESTIMONIALS / SOCIAL PROOF ───────────────────────────────── }}
+<section class="hp-section hp-testimonials-section hp-reveal">
+    <div class="container">
+        <div class="hp-section-header">
+            <h2 class="hp-section-title">What Homeowners Are Saying</h2>
+            <p class="hp-section-desc">Thousands of homeowners have used our guides to navigate the permit process. Here is what some of them had to say about their experience.</p>
+        </div>
+        <div class="hp-testimonials-grid">
+            <div class="hp-testimonial-card">
+                <div class="hp-testimonial-stars" aria-label="5 out of 5 stars">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <blockquote class="hp-testimonial-text">I was about to start a kitchen remodel without realizing I needed separate permits for electrical and plumbing. This site saved me from what could have been a $5,000 mistake. The city-specific guides are incredibly detailed.</blockquote>
+                <div class="hp-testimonial-author">
+                    <div class="hp-testimonial-avatar">MR</div>
+                    <div class="hp-testimonial-info">
+                        <strong>Mike R.</strong>
+                        <span>Homeowner, Austin TX</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hp-testimonial-card">
+                <div class="hp-testimonial-stars" aria-label="5 out of 5 stars">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <blockquote class="hp-testimonial-text">As a first-time home buyer, I had no idea where to start with permits for a fence and shed. The step-by-step process guide on this site walked me through everything. I had my permits approved in under two weeks.</blockquote>
+                <div class="hp-testimonial-author">
+                    <div class="hp-testimonial-avatar">SL</div>
+                    <div class="hp-testimonial-info">
+                        <strong>Sarah L.</strong>
+                        <span>Homeowner, Phoenix AZ</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hp-testimonial-card">
+                <div class="hp-testimonial-stars" aria-label="5 out of 5 stars">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <blockquote class="hp-testimonial-text">My contractor told me a permit was not needed for my bathroom remodel. After reading the articles here, I found out it absolutely was required in my county. I am glad I double-checked because the inspector did show up.</blockquote>
+                <div class="hp-testimonial-author">
+                    <div class="hp-testimonial-avatar">JD</div>
+                    <div class="hp-testimonial-info">
+                        <strong>James D.</strong>
+                        <span>Homeowner, Houston TX</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
