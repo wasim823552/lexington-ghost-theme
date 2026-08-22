@@ -146,6 +146,14 @@ strong { font-weight: 700; }
     letter-spacing: -0.02em;
 }
 .header-brand .logo-text:hover { color: var(--text-primary); }
+.header-brand .logo-img {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+    max-width: 180px;
+    border-radius: 4px;
+}
+.header-brand .logo:hover { opacity: 0.9; }
 .header-actions {
     display: flex;
     align-items: center;

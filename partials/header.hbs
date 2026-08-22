@@ -2,13 +2,13 @@
 <header class="site-header" id="site-header">
     <div class="header-inner container">
         <div class="header-brand">
-            {{#if @site.logo}}
             <a href="{{@site.url}}" class="logo" aria-label="{{@site.title}}">
-                <img src="{{img_url @site.logo size="medium"}}" alt="{{@site.title}}" width="160" height="40" loading="eager">
+                {{#if @site.logo}}
+                <img src="{{img_url @site.logo size="medium"}}" alt="{{@site.title}}" class="logo-img" loading="eager">
+                {{else}}
+                <img src="{{asset 'img/logo.png'}}" alt="{{@site.title}}" class="logo-img" loading="eager">
+                {{/if}}
             </a>
-            {{else}}
-            <a href="{{@site.url}}" class="logo-text">{{@site.title}}</a>
-            {{/if}}
         </div>
 
         {{> navigation}}

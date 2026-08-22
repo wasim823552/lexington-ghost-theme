@@ -49,9 +49,13 @@
     <meta name="twitter:image" content="{{img_url @site.icon size="lg"}}">
     {{/if}}
     <link rel="alternate" type="application/rss+xml" title="{{@site.title}}" href="{{@site.url}}/rss/">
-    {{#if @site.icon}}
-    <link rel="icon" href="{{img_url @site.icon size="xs"}}" type="image/png">
-    {{/if}}
+    <link rel="icon" href="{{asset "img/favicon.ico"}}" sizes="32x32">
+    <link rel="icon" href="{{asset "img/favicon-32x32.png"}}" type="image/png" sizes="32x32">
+    <link rel="icon" href="{{asset "img/favicon-192x192.png"}}" type="image/png" sizes="192x192">
+    <link rel="apple-touch-icon" href="{{asset "img/apple-touch-icon.png"}}">
+    <meta name="msapplication-TileImage" content="{{asset "img/favicon-192x192.png"}}">
+    <meta name="msapplication-TileColor" content="#2563eb">
+    <meta name="theme-color" content="#2563eb">
     {{ghost_head}}
     {{> schema-markup}}
     <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
